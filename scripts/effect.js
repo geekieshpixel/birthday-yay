@@ -3,18 +3,36 @@ $(window).load(function(){
     $('.container').fadeIn('fast');
 });
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:240, left: vw-350},500);
-			$('#b22').animate({top:240, left: vw-250},500);
-			$('#b33').animate({top:240, left: vw-150},500);
-			$('#b44').animate({top:240, left: vw-50},500);
-			$('#b55').animate({top:240, left: vw+50},500);
-			$('#b66').animate({top:240, left: vw+150},500);
-			$('#b77').animate({top:240, left: vw+250},500);
-		});
+        var vw;
+
+        function layoutLettersResponsive() {
+            var width = $(window).width();
+            vw = width/2;
+            var step;
+            if (width <= 400) step = 42;           // very small phones
+            else if (width <= 576) step = 48;      // small phones (tighter)
+            else if (width <= 768) step = 64;      // tablets portrait (tighter)
+            else step = 100;                       // desktop
+
+            var topPos = 240; // fixed as requested
+            // center based on actual balloon width (responsive)
+            var bw = parseInt($('.balloons').css('width'), 10);
+            if (isNaN(bw) || bw <= 0) bw = 100;
+            var start = vw - (3 * step + bw/2);
+
+            $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+            $('#b11').animate({top:topPos, left: start + (0*step)},500);
+            $('#b22').animate({top:topPos, left: start + (1*step)},500);
+            $('#b33').animate({top:topPos, left: start + (2*step)},500);
+            $('#b44').animate({top:topPos, left: start + (3*step)},500);
+            $('#b55').animate({top:topPos, left: start + (4*step)},500);
+            $('#b66').animate({top:topPos, left: start + (5*step)},500);
+            $('#b77').animate({top:topPos, left: start + (6*step)},500);
+        }
+
+        $(window).resize(function(){
+            layoutLettersResponsive();
+        });
 
     $('#turn_on').click(function(){
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
@@ -53,59 +71,53 @@ $('document').ready(function(){
         });
 	});
 
-	function loopOne() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b1').animate({left:randleft,bottom:randtop},10000,function(){
-			loopOne();
-		});
-	}
-	function loopTwo() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b2').animate({left:randleft,bottom:randtop},10000,function(){
-			loopTwo();
-		});
-	}
-	function loopThree() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b3').animate({left:randleft,bottom:randtop},10000,function(){
-			loopThree();
-		});
-	}
-	function loopFour() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b4').animate({left:randleft,bottom:randtop},10000,function(){
-			loopFour();
-		});
-	}
-	function loopFive() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b5').animate({left:randleft,bottom:randtop},10000,function(){
-			loopFive();
-		});
-	}
+    function loopOne() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b1').animate({left:randleft,bottom:randtop},9000,function(){ loopOne(); });
+    }
+    function loopTwo() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b2').animate({left:randleft,bottom:randtop},9800,function(){ loopTwo(); });
+    }
+    function loopThree() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b3').animate({left:randleft,bottom:randtop},10400,function(){ loopThree(); });
+    }
+    function loopFour() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b4').animate({left:randleft,bottom:randtop},9200,function(){ loopFour(); });
+    }
+    function loopFive() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b5').animate({left:randleft,bottom:randtop},10100,function(){ loopFive(); });
+    }
 
-	function loopSix() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b6').animate({left:randleft,bottom:randtop},10000,function(){
-			loopSix();
-		});
-	}
-	function loopSeven() {
-		var randleft = 1000*Math.random();
-		var randtop = 500*Math.random();
-		$('#b7').animate({left:randleft,bottom:randtop},10000,function(){
-			loopSeven();
-		});
-	}
+    function loopSix() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b6').animate({left:randleft,bottom:randtop},9600,function(){ loopSix(); });
+    }
+    function loopSeven() {
+        var w=$(window).width(), h=$(window).height();
+        var randleft = Math.max(0, (w-120)*Math.random());
+        var randtop = Math.max(0, (h-160)*Math.random());
+        $('#b7').animate({left:randleft,bottom:randtop},11000,function(){ loopSeven(); });
+    }
 
-	$('#balloons_flying').click(function(){
-		$('.balloon-border').animate({top:-500},8000);
+    $('#balloons_flying').click(function(){
+        var h=$(window).height();
+        $('.balloon-border').animate({top: -Math.max(300, h*0.8)},6000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
         $('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
 		loopOne();
@@ -136,30 +148,25 @@ $('document').ready(function(){
 	});
 
 		
-	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
+        $('#wish_message').click(function(){
+            vw = $(window).width()/2;
 
-		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-		$('#b1').attr('id','b11');
-		$('#b2').attr('id','b22')
-		$('#b3').attr('id','b33')
-		$('#b4').attr('id','b44')
-		$('#b5').attr('id','b55')
-		$('#b6').attr('id','b66')
-		$('#b7').attr('id','b77')
-		$('#b11').animate({top:240, left: vw-350},500);
-		$('#b22').animate({top:240, left: vw-250},500);
-		$('#b33').animate({top:240, left: vw-150},500);
-		$('#b44').animate({top:240, left: vw-50},500);
-		$('#b55').animate({top:240, left: vw+50},500);
-		$('#b66').animate({top:240, left: vw+150},500);
-		$('#b77').animate({top:240, left: vw+250},500);
-		$('.balloons').css('opacity','0.9');
-		$('.balloons h2').fadeIn(3000);
-        $(this).fadeOut(200).promise().done(function(){
-            $('#story').fadeIn(300);
+            $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+            $('#b1').attr('id','b11');
+            $('#b2').attr('id','b22')
+            $('#b3').attr('id','b33')
+            $('#b4').attr('id','b44')
+            $('#b5').attr('id','b55')
+            $('#b6').attr('id','b66')
+            $('#b7').attr('id','b77')
+
+            layoutLettersResponsive();
+            $('.balloons').css('opacity','0.9');
+            $('.balloons h2').fadeIn(3000);
+            $(this).fadeOut(200).promise().done(function(){
+                $('#story').fadeIn(300);
+            });
         });
-	});
 	
 	$('#story').click(function(){
 		$(this).fadeOut('slow');
@@ -176,8 +183,6 @@ $('document').ready(function(){
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
                     $('.cake').fadeIn('fast');
-                    // show envelope button after the message sequence
-                    $('#envelope_row').fadeIn(600);
 				});
 				
 			}
@@ -193,14 +198,7 @@ $('document').ready(function(){
 		
 	});
 
-    // Letter modal interactions
-    $('#open_letter').on('click', function(){
-        $('#letter_modal').addClass('show').fadeIn(150);
-    });
-
-    $('.letter-close, .letter-backdrop').on('click', function(){
-        $('#letter_modal').removeClass('show').fadeOut(150);
-    });
+    // envelope feature removed
 });
 
 

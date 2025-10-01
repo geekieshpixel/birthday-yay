@@ -1555,27 +1555,6 @@ audio {
 	font-weight: bold;
 }
 
-/* .btn-primary {
-	border-color: #000000;
-	padding: 10px;
-	text-transform: uppercase;
-	font-family: 'Signika', sans-serif;
-	font-weight: 700;
-	color: #000000;
-	background-color: #fffb00;
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-	border-color: #fff;
-	color: #fff;
-	background-color: #fffb00;
-} */
-
-/* From Uiverse.io by MuhammadHasann */ 
 .button-primary {
   position: relative;
   padding: 12px 35px;
@@ -1726,7 +1705,6 @@ audio {
   fill: #fffdef;
 }
 
-/* From Uiverse.io by NomNomcats */ 
 .button-secondary {
   display: inline-block;
   transition: all 0.3s ease;
